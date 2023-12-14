@@ -100,17 +100,22 @@ function LogIn() {
                             <div className={styles.form_content}>
                                 <div className={styles.input_wraper_large}>
                                     <div className={`${styles.input_large} ${emailError ? styles.input_small_error : ''}`}>
-                                        <input className={styles.input} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                                        <input className={styles.input} type="email" id="email-input" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                                         {emailError && <span className={styles.input_label_error}>{emailError}</span>}
-                                        <label className={`${styles.input_label} ${email ? styles.input_label_notEmpty : ''}`}>Email</label>
+                                        <label
+                                            className={`${styles.input_label} ${email ? styles.input_label_notEmpty : ''}`}
+                                            htmlFor="email-input"  // Utiliser htmlFor pour faire référence à l'ID de l'input
+                                        >
+                                            Email
+                                        </label>
                                         <EmailIcon/>
                                     </div>
                                 </div>
                                 <div className={styles.input_wraper_large}>
                                     <div className={`${styles.input_large} ${passwordError ? styles.input_small_error : ''}`}>
-                                        <input className={styles.input} type={isVisiblePassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} required/>
+                                        <input id="password-input" className={styles.input} type={isVisiblePassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} required/>
                                         {passwordError && <span className={styles.input_label_error}>{passwordError}</span>}
-                                        <label className={`${styles.input_label} ${password ? styles.input_label_notEmpty : ''}`}>Mot de passe</label>
+                                        <label  htmlFor="password-input" className={`${styles.input_label} ${password ? styles.input_label_notEmpty : ''}`}>Mot de passe</label>
                                         <div  className={styles.eye_cursor} onClick={changeVisibility}>
                                             {isVisiblePassword ? <VisibleOffPasswordIcon/> : <VisiblePasswordIcon/>}
                                         </div>
